@@ -2,7 +2,7 @@
 version: '3.7'
 services:
   db:
-    container_name: backend-api-db
+    container_name: db-hefc
     image: postgres:12
     ports:
       - 5432:5432
@@ -13,8 +13,8 @@ services:
     volumes:
       - postgres:/var/lib/postgresql/data
 
-  backend-api:
-    container_name: backend-api
+  backend:
+    container_name: backend-hefc
     build: .
     ports:
       - 8080:8080
