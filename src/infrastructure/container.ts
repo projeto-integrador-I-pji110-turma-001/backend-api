@@ -15,6 +15,8 @@ import { ApiRouter } from './routes/ApiRouter';
 import { HealthRoutes } from './routes/HealthRoutes';
 import PatientRoutes from './routes/PatientRoutes';
 import { PatientRepository } from './repositories/PatientRepository';
+import { WorkshopRepository } from './repositories/WorkshopRepository';
+import WorkshopRoutes from './routes/WorkshopRoutes';
 
 export class Container {
   instance: AwilixContainer;
@@ -42,10 +44,7 @@ export class Container {
           .singleton()
           .disposer((s) => s.dispose()),
       })
-      .register({
-        healthRoutes: asClass(HealthRoutes).singleton(),
-        patientRoutes: asClass(PatientRoutes).singleton(),
-      })
+
       .register({
         httpServer: asClass(HttpServer)
           .singleton()
@@ -56,6 +55,12 @@ export class Container {
           .singleton()
           .disposer((d) => d.dispose()),
         patientRepository: asClass(PatientRepository).singleton(),
+        workshopRepository: asClass(WorkshopRepository).singleton(),
+      })
+      .register({
+        healthRoutes: asClass(HealthRoutes).singleton(),
+        patientRoutes: asClass(PatientRoutes).singleton(),
+        workshopRoutes: asClass(WorkshopRoutes).singleton(),
       })
       .loadModules(
         [

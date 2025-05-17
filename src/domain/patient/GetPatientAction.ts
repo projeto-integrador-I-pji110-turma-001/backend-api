@@ -1,15 +1,17 @@
-import { AddPatientSchema } from '../../infrastructure/http/controllers/patient/AddPatientController';
 import { PatientRepository } from '../../infrastructure/repositories/PatientRepository';
 import { Action } from '../Action';
 
-export class AddPatientAction extends Action {
+export class GetPatientAction extends Action {
   constructor(private patientRepository: PatientRepository) {
     super();
   }
 
-  async execute(data: AddPatientSchema) {
+  async execute(patientId?: string) {
     try {
-      return await this.patientRepository.add(data);
+      if (patientId) {
+        return await this.patientRepository.getById(patientId);
+      }
+      return await this.patientRepository.getAll({});
     } catch (e) {
       throw new Error(e);
     }

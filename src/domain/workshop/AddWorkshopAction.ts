@@ -1,15 +1,15 @@
 import { AddPatientSchema } from '../../infrastructure/http/controllers/patient/AddPatientController';
-import { PatientRepository } from '../../infrastructure/repositories/PatientRepository';
+import { WorkshopRepository } from '../../infrastructure/repositories/WorkshopRepository';
 import { Action } from '../Action';
 
-export class AddPatientAction extends Action {
-  constructor(private patientRepository: PatientRepository) {
+export class AddWorkshopAction extends Action {
+  constructor(private workshopRepository: WorkshopRepository) {
     super();
   }
 
   async execute(data: AddPatientSchema) {
     try {
-      return await this.patientRepository.add(data);
+      return await this.workshopRepository.add(data);
     } catch (e) {
       throw new Error(e);
     }
