@@ -10,13 +10,16 @@ export class Loan {
   @Column({ type: 'timestamp' })
   loanDate: Date;
 
+  @Column({ type: 'timestamp' })
+  returnDate: Date;
+
   @Column({ type: 'varchar', length: 255 })
   patientName: string;
 
   @Column({ type: 'varchar', length: 255 })
   equipment: string;
 
-  @Column({ type: 'enum', enum: ['pending', 'returned'] })
+  @Column({ type: 'enum', enum: ['active', 'returned', 'overdue'] })
   status: LoanStatus;
 
   @CreateDateColumn()
