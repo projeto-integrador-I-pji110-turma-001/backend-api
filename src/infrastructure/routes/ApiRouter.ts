@@ -4,6 +4,7 @@ import { AwilixResolver } from '../resolver';
 import PatientRoutes from './PatientRoutes';
 import WorkshopRoutes from './WorkshopRoutes';
 import DonationRoutes from './DonationRoutes';
+import AppointmentRoutes from './AppointmentRoutes';
 
 export class ApiRouter extends AwilixResolver {
   constructor(
@@ -11,6 +12,7 @@ export class ApiRouter extends AwilixResolver {
     private patientRoutes: PatientRoutes,
     private workshopRoutes: WorkshopRoutes,
     private donationRoutes: DonationRoutes,
+    private appointmentRoutes: AppointmentRoutes
   ) {
     super();
   }
@@ -20,5 +22,6 @@ export class ApiRouter extends AwilixResolver {
     this.patientRoutes.routes(fastify);
     this.workshopRoutes.routes(fastify);
     this.donationRoutes.routes(fastify);
+    this.appointmentRoutes.routes(fastify);
   }
 }
